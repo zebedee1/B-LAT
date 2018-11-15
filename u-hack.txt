@@ -1,0 +1,37 @@
+
+
+create database bbank;
+
+CREATE TABLE tbl_login (
+    	Username varchar(200),
+	Password varchar(200));
+
+CREATE TABLE tbl_Users (
+    	UserID int identity(10000001,1) primary key not null,
+	EmailAddress varchar(200) ,
+	Password varchar(200),
+	FirstName varchar(200),
+	MiddleName varchar(200),
+    	LastName varchar(200),
+    	Username varchar(200),
+	Age int,
+	BloodType varchar(10),
+	Address text,
+	Birth_date date,
+	Last_donate date,
+	Gender varchar(50),
+	Hash1 varchar(200),);
+
+	CREATE TABLE tbl_requestblood(
+	UserID int,
+	Req_Date date,
+	BloodType varchar(10),
+	Blood_Amount decimal(9,1),
+	FOREIGN KEY (UserID) REFERENCES tbl_Users(UserID));
+
+	CREATE TABLE tbl_history(
+	UserID int,
+	Blood_Donate decimal(9,1),
+	date_donated date,
+	date_widthraw date,
+	FOREIGN KEY (UserID) REFERENCES tbl_Users(UserID));
